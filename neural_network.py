@@ -28,7 +28,6 @@ class Layer:
         self.outputs = np.dot(inputs, self.weights) + self.biases
         if self.activation == "sigmoid":
             self.outputs = self.sigmoid(self.outputs)
-            print("done")
         elif self.activation == "softmax":
             self.outputs = self.softmax(self.outputs)
         elif self.activation == "ReLU":
@@ -44,9 +43,9 @@ class Layer:
         output = self.forward(inputs)
 
         if index == 0:
-            inps = np.zeros((2, 1))
-            inps[0][0] = inputs[0]
-            inps[1][0] = inputs[1]
+            inps = np.zeros((len(inputs), 1))
+            for i in range(len(inputs)):
+                inps[i][0] = inputs[i]
             inputs = inps
             
 
