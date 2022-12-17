@@ -7,6 +7,10 @@ import pickle
 class Layer:
     # init function
     def __init__(self, n_inputs, n_neurons, activation=None) -> None:
+        # n_inputs(int): is the number of inputs in the layer 
+        # n_neurons(int): is the number of the neurons in the layer
+        # activation(str): is the activation function if None the "softmax" will be used by defualt
+
         # initializing weights, biases etc...
         self.weights = (np.random.rand(n_inputs, n_neurons) * 6) - 3 
         self.biases = np.zeros((1, n_neurons))
@@ -22,7 +26,7 @@ class Layer:
         copy_layer.insert_values(copy_weights, copy_biases)
         return copy_layer
     
-    def insert_values(self, new_weights, new_biases):
+    def insert_values(self, new_weights, new_biases): # replaces the weights and biases of the layer
         self.weights = new_weights
         self.biases = new_biases
 
